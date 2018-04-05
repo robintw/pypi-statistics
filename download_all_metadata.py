@@ -25,12 +25,12 @@ package_names = get_all_package_names()
 for index, package_name in enumerate(package_names):
     # If the file we're going to download to already exists then skip
     # downloading it again
-    if os.path.exists('data/' + package_name + '.json'):
+    if os.path.exists('all_metadata/' + package_name + '.json'):
         continue
 
     # Get the JSON and write it out to a file
     json_string = get_package_json(package_name)
-    with open('data/' + package_name + '.json', 'w') as f:
+    with open('all_metadata/' + package_name + '.json', 'w') as f:
         f.write(json_string)
     
     # Sleep for 2 minutes every 500 downloads, to avoid hammering PyPI too much

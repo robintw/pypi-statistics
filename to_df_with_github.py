@@ -5,13 +5,13 @@ import pandas as pd
 def convert_to_df_with_github_url():
     """Converts the raw metadata JSON files to a pandas dataframe containing the metadata
     from the 'info' dict in the JSON, and adds a Github URL if found anywhere in the JSON"""
-    files = os.listdir('data')
+    files = os.listdir('all_metadata')
 
     s = []
 
     for filename in tqdm(files):
         # Read JSON file for package
-        with open('data/' + filename) as f:
+        with open('all_metadata/' + filename) as f:
             json_string = f.read()
         # Search in the string for a github URL
         regex_result = re.search('github.com/([^\s;\(){}#]+?/[^\s`_.;\'\\\[\]\{\\}/\","><#!$\%&*)(]+)', json_string)
